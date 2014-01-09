@@ -607,6 +607,7 @@ void cb_btle(void* args, usb_pkt_rx *rx, int bank)
 		uint32_t systime_be = htobe32(systime);
 		if (fwrite(&systime_be, sizeof(systime_be), 1, dumpfile) != 1) {;}
 		if (fwrite(rx, sizeof(usb_pkt_rx), 1, dumpfile) != 1) {;}
+		fflush(dumpfile);
 	}
 
 #ifdef USE_PCAP
